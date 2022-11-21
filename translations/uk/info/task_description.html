@@ -1,7 +1,13 @@
 <!-- Describe task in general -->
 
 <p>
-    Тобі даний рядок. Твоя функція повинна повернути {% if is_js %}<b class="code">true</b>{% else %}<b class="code">True</b>{% endif %} якщо рядок є коректним числом (містить лише цифри і "+-."), інакше - {% if is_js %}<b class="code">false</b>{% else %}<b class="code">False</b>{% endif %}.
+    Тобі дано рядок. Твоя функція повинна повернути {% if is_js %}<b class="code">true</b>{% else %}<b class="code">True</b>{% endif %} якщо рядок є коректним числом (містить лише цифри і "+-." на належних місцях), інакше - {% if is_js %}<b class="code">false</b>{% else %}<b class="code">False</b>{% endif %}. Поглянь на шаблон:
+</p>
+<pre>
+[+- ][zero or more digits][.][zero or more digits]
+</pre>
+<p>
+    Звичайно, не всі частини необхідні. Наприклад, "+10."або "-.55" - це дійсні числа, де частина рівна 0 опущена.
 </p>
 
 <!-- Explain input and output values -->

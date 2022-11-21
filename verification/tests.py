@@ -23,13 +23,18 @@ TESTS = {
             "answer": False,
         },
         {
+            "input": ["+10"],
+            "answer": True,
+        },
+        {
             "input": ["ITS A NUMBER"],
             "answer": False,
         },
         {
-            "input": ["+10"],
+            "input": ["1."],
             "answer": True,
         },
+       
     ],
     "Extra": [
         {
@@ -55,6 +60,22 @@ TESTS = {
         {
             "input": ["+25.25"],
             "answer": True,
+        },
+        {
+            "input": ["+.123"],
+            "answer": True,
+        },
+        {
+            "input": ["-40."],
+            "answer": True,
+        },
+        {
+            "input": [".1"],
+            "answer": True,
+        },
+        {
+            "input": ["+.l"],
+            "answer": False,
         },
     ]
 }
