@@ -38,7 +38,6 @@ TESTS = {
             "input": ["+.l"],
             "answer": False,
         },
-       
     ],
     "Extra": [
         {
