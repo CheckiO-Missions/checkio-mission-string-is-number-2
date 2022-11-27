@@ -23,20 +23,28 @@ TESTS = {
             "answer": False,
         },
         {
-            "input": ["+10"],
+            "input": ["+10.0"],
             "answer": True,
         },
         {
-            "input": ["ITS A NUMBER"],
+            "input": ["1OOO"],
             "answer": False,
         },
         {
             "input": ["1."],
             "answer": True,
         },
+        {
+            "input": ["+.l"],
+            "answer": False,
+        },
        
     ],
     "Extra": [
+        {
+            "input": ["ITS A NUMBER"],
+            "answer": False,
+        },
         {
             "input": ["1033"],
             "answer": True,
@@ -47,10 +55,6 @@ TESTS = {
         },
         {
             "input": ["1l0O"],
-            "answer": False,
-        },
-        {
-            "input": ["1OOO"],
             "answer": False,
         },
         {
@@ -73,9 +77,6 @@ TESTS = {
             "input": [".1"],
             "answer": True,
         },
-        {
-            "input": ["+.l"],
-            "answer": False,
-        },
+
     ]
 }
