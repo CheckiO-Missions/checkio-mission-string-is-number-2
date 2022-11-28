@@ -76,6 +76,9 @@ TESTS = {
             "input": [".1"],
             "answer": True,
         },
-
+        {
+            "input": ["."],
+            "answer": False,
+        },
     ]
 }
