@@ -38,6 +38,10 @@ TESTS = {
             "input": ["+.l"],
             "answer": False,
         },
+        {
+            "input": ["++1+.2-"],
+            "answer": False,
+        },
     ],
     "Extra": [
         {
@@ -78,6 +82,10 @@ TESTS = {
         },
         {
             "input": ["."],
+            "answer": False,
+        },
+        {
+            "input": ["--5"],
             "answer": False,
         },
     ]
