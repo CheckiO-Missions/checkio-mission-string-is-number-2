@@ -42,6 +42,10 @@ TESTS = {
             "input": ["++1+.2-"],
             "answer": False,
         },
+        {
+            "input": ["3e4"],
+            "answer": False,
+        },
     ],
     "Extra": [
         {
