@@ -1,0 +1,26 @@
+<!-- Describe task in general -->
+
+<p>
+    Otrzymują Państwo ciąg znaków. Funkcja powinna zwrócić <b class="code">{% if is_js %}t{% else %}T{% endif %}rue</b> jeśli ciąg jest poprawną liczbą (zawiera tylko cyfry i "+-." w odpowiednich miejscach), w przeciwnym razie - <b class="code">{% if is_js %}f{% else %}F{% endif %}alse</b>. Proszę spojrzeć na maskę:
+</p>
+<pre>
+[+- ][zero or more digits][.][zero or more digits]
+</pre>
+<p>
+    Oczywiście nie wszystkie części są konieczne (ale przynajmniej jedna część cyfrowa jest!). Na przykład "+10." lub "-.55" są poprawnymi liczbami, w których pominięto część równą 0.
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Wejście:</strong> Ciąg znaków <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Wyjście:</strong> Wartość logiczna <span>(bool{% if is_js %}ean{% endif %})</span>. 
+</p>
+
+<p>
+    <strong>Przykłady:</strong>
+</p>
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
