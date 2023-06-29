@@ -1,0 +1,156 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Nie mam pojęcia, jak zacząć rozwiązywać tę misję.
+    </div>
+    <div class="answer">
+        <p>
+            chociaż istnieją liczby, które zawierają literę, w tym konkretnym zadaniu nie są one dozwolone. Proszę więc sprawdzić, czy w liczbie nie ma liter i spróbować przekonwertować ją na typ <span>float</span>. Konwersja ta jest konieczna, ponieważ w ciągu może znajdować się kropka. Jeśli wszystkie te kontrole zakończą się pomyślnie, podany ciąg jest liczbą.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, od czego powinienem zacząć?
+    </div>
+    <div class="answer">
+        <p>
+            Proszę sprawdzić, czy każdy znak w <b class="code">val</b> jest literą. Najpierw za pomocą <b class="code">for</b> pętli iterujemy po podanym ciągu <b class="code">val</b>.
+        </p>
+        <pre class="brush: python">
+for char in val:
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Jak wykonać to sprawdzanie?
+    </div>
+    <div class="answer">
+        <p>
+            Proszę sprawdzić, czy znak jest literą za pomocą metody <a target="_blank" href="https://www.w3schools.com/python/ref_string_isalpha.asp">str.isalpha()</a>. Zwraca ona wartość logiczną. Jeśli jej <b class="code">True</b> dla dowolnego znaku, to podany ciąg nie jest liczbą, a Państwa funkcja może już zwrócić <b class="code">False</b>.
+        </p>
+        <pre class="brush: python">
+if char.isalpha():
+    return False
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Co zrobić dalej, jeśli w podanym ciągu nie ma liter?
+    </div>
+    <div class="answer">
+        <p>
+            Tutaj potrzebne jest wyrażenie <a target="_blank" href="https://www.w3schools.com/python/python_try_except.asp">try/except</a>, aby poprawnie przechwycić <b class="code">ValueError</b>, jeśli <b class="code">val</b> nie może zostać przekonwertowane na <b class="code">float</b>.
+        </p>
+        <pre class="brush: python">
+try:
+    ...
+except ValueError:
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Proszę mi pomóc wypełnić wyrażenie.
+    </div>
+    <div class="answer">
+        <p>
+            Jak już wspomniałem, musi Pan spróbować przekształcić podany ciąg <b class="code">val</b> na float za pomocą wbudowanej funkcji <a target="_blank" href="https://www.w3schools.com/python/ref_func_float.asp">float()</a>.
+        </p>
+        <pre class="brush: python">
+try:
+    float(val)
+    ...
+        </pre>
+        <p>
+            Ponieważ tak naprawdę interesuje Pana proces konwersji, a nie wartość, nie musi Pan przypisywać wyniku do żadnej zmiennej. 
+        </p>
+        <p>
+            Jeśli konwersja się powiedzie, funkcja musi zwrócić <b class="code">True</b>.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Jak wypełnić blok except?
+    </div>
+    <div class="answer">
+        <p>
+            To proste. Jeśli ciąg znaków nie może zostać przekonwertowany na <b class="code">float</b> (zgłaszany jest błąd), funkcja musi zwrócić <b class="code">False</b>.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Jak więc powinno wyglądać moje ostateczne rozwiązanie?
+    </div>
+    <div class="answer">
+        <p>
+            Wystarczy połączyć wszystkie poprzednie podpowiedzi i zawinąć kod w wyrażenie funkcyjne. Używanie podpowiedzi typu dla danych wejściowych i wyjściowych jest wysoce zalecane.
+        </p>
+        <p>Poniżej znajduje się całe rozwiązanie:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_number(val: str) -> bool:
+
+    for char in val:
+        if char.isalpha():
+            return False
+    try:
+        float(val)
+        return True
+    except:
+        return False
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Proszę pokazać mi więcej rozwiązań!<br />
+        bo chcę być prawdziwą 🥇 Python Ninnjaa!
+    </div>
+    <div class="answer">
+        <p>Jasne, proszę łapać!</p>
+        <p>
+            Tutaj proszę usunąć wszystko, co nie zmienia sprawdzania i sprawdzić resztę za pomocą metody <b class="code">str.isdigit()</b>.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_number(val: str) -> bool:
+
+    if val.startswith(("+", "-")):
+        val = val[1:]
+
+    return val.replace(".", "").isdigit()
+        </pre>
+        </div>
+        <p>
+            Proszę użyć modułu wyrażeń regularnych i utworzyć wzorzec liczb. Następnie proszę porównać, czy wzorzec w pełni pasuje do podanego ciągu znaków.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+import re
+
+
+def is_number(val: str) -> bool:
+
+    return bool(re.fullmatch(r'[-+]?(?:\d+\.?\d*|\d*\.\d+)', val))
+        </pre>
+        </div>
+        <p>Proszę kliknąć <b>Best Solutions</b> w menu misji i zobaczyć wiele innych ciekawych rozwiązań!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Dzięki! Teraz wiem i rozumiem więcej! Wszystko działa jak należy!
+    </div>
+    <div class="answer">
+        miło mi to słyszeć!
+    </div>
+</div>
+</body>
