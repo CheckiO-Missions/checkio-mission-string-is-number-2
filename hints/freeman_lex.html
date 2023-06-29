@@ -1,0 +1,156 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        I have no idea how to start solving this mission.
+    </div>
+    <div class="answer">
+        <p>
+            💡 Although there are numbers, which include letter, for this particular task they are not allowed. So you need to check if there no letters in number and try to convert in into <span translate="no">float</span> type. You need this conversion exactly, since you may have dot in the string. If all these checks are successful, then the given string is a number.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, what should I start from?
+    </div>
+    <div class="answer">
+        <p>
+            Let's check every character in <b class="code">val</b> for being a letter. First, using <b class="code">for</b> loop iterate over the given string <b class="code">val</b>.
+        </p>
+        <pre class="brush: python">
+for char in val:
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        How to make this checking?
+    </div>
+    <div class="answer">
+        <p>
+            Check if a character is a letter with <a target="_blank" href="https://www.w3schools.com/python/ref_string_isalpha.asp">str.isalpha()</a> method. It returns a logic value. If its <b class="code">True</b> for any character, then the given string is not a number and your function may already return <b class="code">False</b>.
+        </p>
+        <pre class="brush: python">
+if char.isalpha():
+    return False
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        What to do next, if there no letters in the given string?
+    </div>
+    <div class="answer">
+        <p>
+            Here you need <a target="_blank" href="https://www.w3schools.com/python/python_try_except.asp">try/except</a> expression to properly catch <b class="code">ValueError</b>, if <b class="code">val</b> can not be converted into <b class="code">float</b>.
+        </p>
+        <pre class="brush: python">
+try:
+    ...
+except ValueError:
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Help me to fill the expression.
+    </div>
+    <div class="answer">
+        <p>
+            As I already said, you need to try to covert the given string <b class="code">val</b> into float with built-in <a target="_blank" href="https://www.w3schools.com/python/ref_func_float.asp">float()</a> function.
+        </p>
+        <pre class="brush: python">
+try:
+    float(val)
+    ...
+        </pre>
+        <p>
+            Since you are actually interested in the process of conversion, not in the value, you don't need to assign the result to any variable. 
+        </p>
+        <p>
+            If the conversion is successful, you function must return <b class="code">True</b>.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        How to fill the except block?
+    </div>
+    <div class="answer">
+        <p>
+            It's easy. If the string can not be converted into <b class="code">float</b> (the error is raised), you function must return <b class="code">False</b>.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        So, how my final solution should look like?
+    </div>
+    <div class="answer">
+        <p>
+            You just need to join all previous hints and wrap your code into function expression. Using type hints for input and output data are highly recommended.
+        </p>
+        <p>Here is the whole solution:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_number(val: str) -> bool:
+
+    for char in val:
+        if char.isalpha():
+            return False
+    try:
+        float(val)
+        return True
+    except:
+        return False
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Show me more solutions!<br />
+        'Cause I wanna be a real 🥇 Python Ninnjaa!
+    </div>
+    <div class="answer">
+        <p>Sure, grab it!</p>
+        <p>
+            Here you remove everything, which is not change the checking actually and check the rest with <b class="code">str.isdigit()</b> method.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_number(val: str) -> bool:
+
+    if val.startswith(("+", "-")):
+        val = val[1:]
+
+    return val.replace(".", "").isdigit()
+        </pre>
+        </div>
+        <p>
+            Use regular expression module and create a pattern of number. Then compare if the pattern fully match the given string.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+import re
+
+
+def is_number(val: str) -> bool:
+
+    return bool(re.fullmatch(r'[-+]?(?:\d+\.?\d*|\d*\.\d+)', val))
+        </pre>
+        </div>
+        <p>Click <b>Best Solutions</b> at mission menu and see a lot of other interesting solutions!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Thanks! I know and understand more now! Everything works fine!
+    </div>
+    <div class="answer">
+        👍 Glad to hear it!
+    </div>
+</div>
+</body>
