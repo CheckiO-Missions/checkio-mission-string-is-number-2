@@ -1,0 +1,26 @@
+<!-- Describe task in general -->
+
+<p>
+    On vous donne une chaîne de caractères. Votre fonction doit retourner <b class="code">{% if is_js %}t{% else %}T{% endif %}rue</b> si la chaîne est un nombre valide (elle ne contient que des chiffres et des "+-." aux endroits appropriés), sinon - <b class="code">{% if is_js %}f{% else %}F{% endif %}alse</b>. Regardez le masque:
+</p>
+<pre>
+[+- ][zero or more digits][.][zero or more digits]
+</pre>
+<p>
+    Bien sûr, toutes les parties ne sont pas nécessaires (mais au moins une partie numérique l'est!). Par exemple, "+10." ou "-.55" sont des nombres valides, où la partie égale à 0 est omise.
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Entrée:</strong> Une chaîne de caractères <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Sortie:</strong> Valeur logique <span>(bool{% if is_js %}ean{% endif %})</span>. 
+</p>
+
+<p>
+    <strong>Exemples:</strong>
+</p>
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
