@@ -1,0 +1,156 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Je n'ai aucune idée de la manière de commencer à résoudre cette mission.
+    </div>
+    <div class="answer">
+        <p>
+            💡 Bien qu'il y ait des nombres qui contiennent des lettres, ils ne sont pas autorisés pour cette tâche particulière. Vous devez donc vérifier s'il n'y a pas de lettres dans les nombres et essayer de les convertir en type <span>float</span>. Vous avez besoin de cette conversion exacte, car vous pouvez avoir des points dans la chaîne. Si toutes ces vérifications sont réussies, alors la chaîne donnée est un nombre.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, par quoi dois-je commencer?
+    </div>
+    <div class="answer">
+        <p>
+            Vérifions que chaque caractère de <b class="code">val</b> est bien une lettre. Tout d'abord, à l'aide de la boucle <b class="code">for</b>, itérez sur la chaîne donnée <b class="code">val</b>.
+        </p>
+        <pre class="brush: python">
+for char in val:
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Comment effectuer cette vérification?
+    </div>
+    <div class="answer">
+        <p>
+            Vérifiez si un caractère est une lettre avec la méthode <a target="_blank" href="https://www.w3schools.com/python/ref_string_isalpha.asp">str.isalpha()</a>. Elle renvoie une valeur logique. Si c'est <b class="code">True</b> pour n'importe quel caractère, alors la chaîne donnée n'est pas un nombre et votre fonction peut déjà retourner <b class="code">False</b>.
+        </p>
+        <pre class="brush: python">
+if char.isalpha():
+    return False
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Que faire ensuite s'il n'y a pas de lettres dans la chaîne donnée?
+    </div>
+    <div class="answer">
+        <p>
+            Ici, vous avez besoin de l'expression <a target="_blank" href="https://www.w3schools.com/python/python_try_except.asp">try/except</a> pour attraper correctement <b class="code">ValueError</b>, si <b class="code">val</b> ne peut pas être converti en <b class="code">float</b>.
+        </p>
+        <pre class="brush: python">
+try:
+    ...
+except ValueError:
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Aidez-moi à compléter l'expression.
+    </div>
+    <div class="answer">
+        <p>
+            Comme je l'ai déjà dit, vous devez essayer de convertir la chaîne de caractères <b class="code">val</b> en float à l'aide de la fonction intégrée <a target="_blank" href="https://www.w3schools.com/python/ref_func_float.asp">float()</a>.
+        </p>
+        <pre class="brush: python">
+try:
+    float(val)
+    ...
+        </pre>
+        <p>
+            Comme c'est le processus de conversion qui vous intéresse, et non la valeur, vous n'avez pas besoin d'affecter le résultat à une variable. 
+        </p>
+        <p>
+            Si la conversion est réussie, votre fonction doit renvoyer <b class="code">True</b>.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Comment remplir le bloc d'exception?
+    </div>
+    <div class="answer">
+        <p>
+            C'est très simple. Si la chaîne ne peut pas être convertie en <b class="code">float</b> (l'erreur est levée), votre fonction doit renvoyer <b class="code">False</b>.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Alors, à quoi devrait ressembler ma solution finale?
+    </div>
+    <div class="answer">
+        <p>
+            Il vous suffit de combiner tous les indices précédents et d'envelopper votre code dans une expression de fonction. Il est fortement recommandé d'utiliser des indications de type pour les données d'entrée et de sortie.
+        </p>
+        <p>Voici la solution complète:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_number(val: str) -> bool:
+
+    for char in val:
+        if char.isalpha():
+            return False
+    try:
+        float(val)
+        return True
+    except:
+        return False
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Montrez-moi d'autres solutions!<br />
+        parce que je veux être une vraie 🥇 Python Ninnjaa!
+    </div>
+    <div class="answer">
+        <p>Bien sûr, prenez-le!</p>
+        <p>
+            Ici, vous supprimez tout ce qui ne change pas la vérification en fait et vérifiez le reste avec la méthode <b class="code">str.isdigit()</b>.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_number(val: str) -> bool:
+
+    if val.startswith(("+", "-")):
+        val = val[1:]
+
+    return val.replace(".", "").isdigit()
+        </pre>
+        </div>
+        <p>
+            Utilisez le module d'expression régulière et créez un modèle de nombre. Ensuite, comparez si le motif correspond entièrement à la chaîne donnée.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+import re
+
+
+def is_number(val: str) -> bool:
+
+    return bool(re.fullmatch(r'[-+]?(?:\d+\.?\d*|\d*\.\d+)', val))
+        </pre>
+        </div>
+        <p>Cliquez sur <b>Best Solutions</b> dans le menu mission et découvrez de nombreuses autres solutions intéressantes!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Merci beaucoup! Je comprends mieux maintenant! Tout fonctionne bien!
+    </div>
+    <div class="answer">
+        👍 Heureux de l'apprendre!
+    </div>
+</div>
+</body>
