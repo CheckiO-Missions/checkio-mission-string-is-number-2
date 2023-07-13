@@ -1,0 +1,156 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        我不知道如何开始解决这项任务。
+    </div>
+    <div class="answer">
+        <p>
+            💡虽然有数字，其中包括字母，但对于这个特定的任务，他们是不允许的。因此，您需要检查数字中是否包含字母，并尝试将其转换为<span>float</span> 类型。由于字符串中可能包含点，因此需要进行精确的转换。如果所有这些检查都成功，那么给定的字符串就是一个数字。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        好吧，我应该从什么开始呢？
+    </div>
+    <div class="answer">
+        <p>
+            让我们检查<b class="code">val</b> 中的每个字符是否为字母。首先，使用<b class="code">for</b> 循环遍历给定的字符串<b class="code">val</b> 。
+        </p>
+        <pre class="brush: python">
+for char in val:
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        如何进行检查？
+    </div>
+    <div class="answer">
+        <p>
+            使用<a target="_blank" href="https://www.w3schools.com/python/ref_string_isalpha.asp">str.isalpha()</a> 方法检查字符是否为字母。它返回一个逻辑值。如果任何字符的<b class="code">True</b> ，那么给定的字符串不是数字，您的函数可能已经返回<b class="code">False</b> 。
+        </p>
+        <pre class="brush: python">
+if char.isalpha():
+    return False
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        如果给定字符串中没有字母，下一步该怎么办？
+    </div>
+    <div class="answer">
+        <p>
+            这里需要<a target="_blank" href="https://www.w3schools.com/python/python_try_except.asp">try/except</a> 表达式来正确捕获<b class="code">ValueError</b> ，如果<b class="code">val</b> 不能转换成<b class="code">float</b> 。
+        </p>
+        <pre class="brush: python">
+try:
+    ...
+except ValueError:
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        请帮助我填写表达式。
+    </div>
+    <div class="answer">
+        <p>
+            正如我已经说过的，您需要尝试使用内置的<a target="_blank" href="https://www.w3schools.com/python/ref_func_float.asp">float()</a> 函数将给定的字符串<b class="code">val</b> 转换为浮点数。
+        </p>
+        <pre class="brush: python">
+try:
+    float(val)
+    ...
+        </pre>
+        <p>
+            由于您实际上感兴趣的是转换过程，而不是转换值，因此您不需要将转换结果赋值给任何变量。 
+        </p>
+        <p>
+            如果转换成功，函数必须返回<b class="code">True</b> 。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        如何填充except块？
+    </div>
+    <div class="answer">
+        <p>
+            很简单。如果字符串不能转换成<b class="code">float</b> （错误发生），函数必须返回<b class="code">False</b> 。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        那么，我的最终解决方案应该是怎样的呢？
+    </div>
+    <div class="answer">
+        <p>
+            您只需将之前所有的提示连接起来，并将代码封装为函数表达式。强烈建议对输入和输出数据使用类型提示。
+        </p>
+        <p>以下是整个解决方案：</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_number(val: str) -> bool:
+
+    for char in val:
+        if char.isalpha():
+            return False
+    try:
+        float(val)
+        return True
+    except:
+        return False
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        告诉我更多解决方案！<br />
+        因为我想成为一个真正的 🥇 Python Ninnjaa！
+    </div>
+    <div class="answer">
+        <p>当然，抓住它！</p>
+        <p>
+            在这里，你删除了一切，这是没有改变的检查实际上和检查与<b class="code">str.isdigit()</b> 方法的其余部分。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_number(val: str) -> bool:
+
+    if val.startswith(("+", "-")):
+        val = val[1:]
+
+    return val.replace(".", "").isdigit()
+        </pre>
+        </div>
+        <p>
+            使用正则表达式模块创建一个数字模式。然后比较该模式是否完全匹配给定的字符串。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+import re
+
+
+def is_number(val: str) -> bool:
+
+    return bool(re.fullmatch(r'[-+]?(?:\d+\.?\d*|\d*\.\d+)', val))
+        </pre>
+        </div>
+        <p>点击任务菜单<b>Best Solutions</b> ，查看更多有趣的解决方案！</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        谢谢！我现在知道并理解得更多了！一切正常！
+    </div>
+    <div class="answer">
+        很高兴听到这个消息！
+    </div>
+</div>
+</body>
