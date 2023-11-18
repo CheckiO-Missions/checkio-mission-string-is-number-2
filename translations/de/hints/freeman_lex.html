@@ -1,0 +1,156 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Ich habe keine Ahnung, wie ich mit der Lösung dieser Aufgabe beginnen soll.
+    </div>
+    <div class="answer">
+        <p>
+            💡 Es gibt zwar Zahlen, die Buchstaben enthalten, aber für diese spezielle Aufgabe sind sie nicht erlaubt. Sie müssen also prüfen, ob die Zahlen keine Buchstaben enthalten und versuchen, sie in den Typ <span>float</span> umzuwandeln. Diese Konvertierung müssen Sie genau durchführen, da Sie möglicherweise Punkte in der Zeichenkette haben. Wenn alle diese Prüfungen erfolgreich sind, ist die angegebene Zeichenkette eine Zahl.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, womit soll ich anfangen?
+    </div>
+    <div class="answer">
+        <p>
+            Lassen Sie uns jedes Zeichen in <b class="code">val</b> daraufhin überprüfen, ob es ein Buchstabe ist. Iterieren Sie zunächst mit der Schleife <b class="code">for</b> über die angegebene Zeichenkette <b class="code">val</b>.
+        </p>
+        <pre class="brush: python">
+for char in val:
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Wie kann man diese Prüfung durchführen?
+    </div>
+    <div class="answer">
+        <p>
+            Prüfen Sie mit der Methode <a target="_blank" href="https://www.w3schools.com/python/ref_string_isalpha.asp">str.isalpha()</a>, ob ein Zeichen ein Buchstabe ist. Sie gibt einen logischen Wert zurück. Wenn es sich bei <b class="code">True</b> um ein beliebiges Zeichen handelt, dann ist die angegebene Zeichenkette keine Zahl und Ihre Funktion kann bereits <b class="code">False</b> zurückgeben.
+        </p>
+        <pre class="brush: python">
+if char.isalpha():
+    return False
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Was tun Sie als nächstes, wenn die angegebene Zeichenkette keine Buchstaben enthält?
+    </div>
+    <div class="answer">
+        <p>
+            Hier brauchen Sie den Ausdruck <a target="_blank" href="https://www.w3schools.com/python/python_try_except.asp">try/except</a>, um <b class="code">ValueError</b> richtig abzufangen, wenn <b class="code">val</b> nicht in <b class="code">float</b> umgewandelt werden kann.
+        </p>
+        <pre class="brush: python">
+try:
+    ...
+except ValueError:
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Helfen Sie mir, den Ausdruck auszufüllen.
+    </div>
+    <div class="answer">
+        <p>
+            Wie ich bereits sagte, müssen Sie versuchen, die angegebene Zeichenkette <b class="code">val</b> mit der eingebauten Funktion <a target="_blank" href="https://www.w3schools.com/python/ref_func_float.asp">float()</a> in Float umzuwandeln.
+        </p>
+        <pre class="brush: python">
+try:
+    float(val)
+    ...
+        </pre>
+        <p>
+            Da Sie sich eigentlich für den Prozess der Umwandlung interessieren, nicht für den Wert, brauchen Sie das Ergebnis keiner Variablen zuzuweisen. 
+        </p>
+        <p>
+            Wenn die Konvertierung erfolgreich ist, muss Ihre Funktion <b class="code">True</b> zurückgeben.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Wie füllt man den Ausnahmeblock?
+    </div>
+    <div class="answer">
+        <p>
+            Das ist ganz einfach. Wenn die Zeichenkette nicht in <b class="code">float</b> umgewandelt werden kann (der Fehler wird ausgelöst), muss Ihre Funktion <b class="code">False</b> zurückgeben.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Wie sollte also meine endgültige Lösung aussehen?
+    </div>
+    <div class="answer">
+        <p>
+            Sie müssen nur alle vorherigen Hinweise zusammenführen und Ihren Code in einen Funktionsausdruck verpacken. Die Verwendung von Typ-Hinweisen für Eingabe- und Ausgabedaten wird dringend empfohlen.
+        </p>
+        <p>Hier ist die gesamte Lösung:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_number(val: str) -> bool:
+
+    for char in val:
+        if char.isalpha():
+            return False
+    try:
+        float(val)
+        return True
+    except:
+        return False
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Zeigen Sie mir mehr Lösungen!<br />
+        denn ich möchte ein echter 🥇 Python Ninnjaa sein!
+    </div>
+    <div class="answer">
+        <p>Klar, schnapp sie dir!</p>
+        <p>
+            Hier entfernen Sie alles, was die Prüfung eigentlich nicht verändert und prüfen den Rest mit der Methode <b class="code">str.isdigit()</b>.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_number(val: str) -> bool:
+
+    if val.startswith(("+", "-")):
+        val = val[1:]
+
+    return val.replace(".", "").isdigit()
+        </pre>
+        </div>
+        <p>
+            Verwenden Sie das Modul für reguläre Ausdrücke und erstellen Sie ein Zahlenmuster. Vergleichen Sie dann, ob das Muster vollständig mit der angegebenen Zeichenfolge übereinstimmt.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+import re
+
+
+def is_number(val: str) -> bool:
+
+    return bool(re.fullmatch(r'[-+]?(?:\d+\.?\d*|\d*\.\d+)', val))
+        </pre>
+        </div>
+        <p>Klicken Sie im Missionsmenü auf <b>Best Solutions</b> und sehen Sie sich viele andere interessante Lösungen an!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Vielen Dank! Ich weiß und verstehe jetzt mehr! Alles funktioniert bestens!
+    </div>
+    <div class="answer">
+        👍 Freut mich zu hören!
+    </div>
+</div>
+</body>
