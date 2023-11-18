@@ -1,0 +1,26 @@
+<!-- Describe task in general -->
+
+<p>
+    Sie erhalten eine Zeichenkette. Ihre Funktion sollte Folgendes zurückgeben <b class="code">{% if is_js %}t{% else %}T{% endif %}rue</b> zurückgeben, wenn die Zeichenkette eine gültige Zahl ist (die nur Ziffern und "+-." an den richtigen Stellen enthält), andernfalls - <b class="code">{% if is_js %}f{% else %}F{% endif %}alse</b>. Sehen Sie sich die Maske an:
+</p>
+<pre>
+[+- ][zero or more digits][.][zero or more digits]
+</pre>
+<p>
+    Natürlich sind nicht alle Teile notwendig (aber mindestens ein Ziffernteil schon!). Zum Beispiel sind "+10." oder "-.55" gültige Zahlen, bei denen der Teil gleich 0 weggelassen wird.
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Eingabe:</strong> Eine Zeichenkette <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Ausgabe:</strong> Logischer Wert <span>(bool{% if is_js %}ean{% endif %})</span>. 
+</p>
+
+<p>
+    <strong>Beispiele:</strong>
+</p>
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
